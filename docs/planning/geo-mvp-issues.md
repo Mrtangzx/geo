@@ -5,8 +5,8 @@
 基于用户确认的 R2 开发计划与 23 项任务拆分，任务已发布到 [Mrtangzx/geo 的 GitHub Issues](https://github.com/Mrtangzx/geo/issues)。GitHub Issue 正文与原生阻塞关系是任务执行依据，本文件仅提供索引。
 
 - 共 23 张任务票、154 条验收条件、36 条原生阻塞关系，已回读核对正文、标签、状态和完整依赖。
-- 全部任务当前为开放状态，标签为 `ready-for-agent`；该标签表示规格已就绪，执行前仍须检查阻塞任务是否全部关闭。
-- 当前可直接开始：[#1](https://github.com/Mrtangzx/geo/issues/1)「本地品牌资料与企业事实管理」。
+- #1 已通过本机工程验收，其余任务依照 GitHub 实际状态推进；`ready-for-agent` 表示规格已就绪，执行前仍须检查阻塞任务是否全部关闭。
+- #1 完成后可并行开始：[#2](https://github.com/Mrtangzx/geo/issues/2) 问题集、[#8](https://github.com/Mrtangzx/geo/issues/8) 页面诊断、[#16](https://github.com/Mrtangzx/geo/issues/16) 邀请登录。
 - 任务发布不代表业务实现或真实效果验收已完成；第 15 项的真实日期观察不阻塞独立的 SaaS 功能建设。
 
 | 序号 | GitHub 任务 | 阻塞任务 |

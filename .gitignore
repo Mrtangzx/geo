@@ -1,0 +1,19 @@
+# Local dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local credentials and runtime state
+.env
+.env.*
+!.env.example
+.local/
+*.log
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.vscode/
