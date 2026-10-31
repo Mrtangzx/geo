@@ -9,19 +9,25 @@
     "start": "next start --hostname 127.0.0.1",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:regression": "tsx --test src/server/http.test.ts",
+    "test:regression": "tsx --test src/server/http.test.ts src/server/page-diagnostics.test.ts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "tsx src/db/migrate.ts"
+    "db:migrate": "tsx src/db/migrate.ts",
+    "auth:configure": "tsx scripts/auth/configure.ts",
+    "auth:invite": "tsx scripts/auth/invite.ts"
   },
   "engines": {
     "node": ">=22.0.0"
   },
   "dependencies": {
+    "@better-auth/drizzle-adapter": "1.7.14",
     "@radix-ui/react-icons": "1.3.2",
     "@radix-ui/react-slot": "1.5.0",
+    "better-auth": "1.7.14",
+    "cheerio": "1.2.0",
     "clsx": "2.1.1",
     "dotenv": "18.0.9",
     "drizzle-orm": "0.45.4",
+    "ipaddr.js": "2.5.0",
     "next": "16.4.3",
     "pg": "8.23.1",
     "react": "19.3.1",

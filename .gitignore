@@ -1,6 +1,7 @@
 # Local dependencies and build output
 node_modules/
 .next/
+.next-invite/
 out/
 dist/
 coverage/

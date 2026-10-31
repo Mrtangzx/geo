@@ -5,7 +5,7 @@ config({ path: ".env.local", quiet: true });
 config({ quiet: true });
 
 export default defineConfig({
-  schema: "./src/db/schema.ts",
+  schema: "./src/db/*schema.ts",
   out: "./src/db/migrations",
   dialect: "postgresql",
 });

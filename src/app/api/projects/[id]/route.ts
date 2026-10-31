@@ -11,7 +11,7 @@ type Context = { params: Promise<{ id: string }> };
 export async function GET(_request: Request, context: Context) {
   return handleApi(async () => {
     const id = projectIdSchema.parse((await context.params).id);
-    const { workspaceId } = getLocalContext();
+    const { workspaceId } = await getLocalContext();
     return jsonResponse({ project: await getProject(workspaceId, id) });
   });
 }
@@ -21,7 +21,7 @@ export async function PUT(request: Request, context: Context) {
     const id = projectIdSchema.parse((await context.params).id);
     const parsed = updateProjectSchema.parse(await readJsonBody(request));
     const { expectedVersion, ...input } = parsed;
-    const { workspaceId, actorId } = getLocalContext();
+    const { workspaceId, actorId } = await getLocalContext();
     return jsonResponse({ project: await updateProject(workspaceId, actorId, id, expectedVersion, input) });
   });
 }

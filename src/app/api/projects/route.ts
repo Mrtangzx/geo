@@ -9,14 +9,14 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   return handleApi(async () => {
-    const { workspaceId } = getLocalContext();
+    const { workspaceId } = await getLocalContext();
     return jsonResponse({ projects: await listProjects(workspaceId) });
   });
 }
 
 export async function POST(request: Request) {
   return handleApi(async () => {
-    const { workspaceId, actorId } = getLocalContext();
+    const { workspaceId, actorId } = await getLocalContext();
     const input = projectInputSchema.parse(await readJsonBody(request));
     return jsonResponse({ project: await createProject(workspaceId, actorId, input) }, 201);
   });
