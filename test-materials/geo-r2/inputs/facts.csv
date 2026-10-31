@@ -1,0 +1,11 @@
+﻿fact_id,workspace_id,brand_id,version,status,statement,source_ref,confirmed_by,is_synthetic
+F01,ws-chengyue,brand-chengyue,facts-v1,confirmed,产品名称为问策经营分析平台。,客户确认表（合成）#F01,fixture-customer,true
+F02,ws-chengyue,brand-chengyue,facts-v1,confirmed,澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。,客户确认表（合成）#F02,fixture-customer,true
+F03,ws-chengyue,brand-chengyue,facts-v1,confirmed,澄岳数析支持通过只读账号接入 MySQL 8.0。,客户确认表（合成）#F03,fixture-customer,true
+F04,ws-chengyue,brand-chengyue,facts-v1,confirmed,问策支持经营指标问答和可视化分析，结果须由业务人员核对。,客户确认表（合成）#F04,fixture-customer,true
+F05,ws-chengyue,brand-chengyue,facts-v1,confirmed,现有 ERP 数据接入需核对接口或数据库读取权限。,客户确认表（合成）#F05,fixture-customer,true
+F06,ws-chengyue,brand-chengyue,facts-v1,confirmed,部署周期取决于数据整理和环境条件，不承诺一天上线。,客户确认表（合成）#F06,fixture-customer,true
+F07,ws-chengyue,brand-chengyue,facts-v1,confirmed,目标客户是有多源经营数据及 IT 运维能力的企业。,客户确认表（合成）#F07,fixture-customer,true
+F08,ws-chengyue,brand-chengyue,facts-v1,confirmed,问策不自动修改源业务数据库，也不代替业务人员清洗全部原始数据。,客户确认表（合成）#F08,fixture-customer,true
+F09,ws-chengyue,brand-chengyue,facts-v1,needs_confirmation,是否通过等保三级：尚未提供可核对材料。,客户确认表（合成）#F09,,true
+F10,ws-chengyue,brand-chengyue,facts-v1,needs_confirmation,报价：尚未确认，不提供固定价格或 ROI。,客户确认表（合成）#F10,,true

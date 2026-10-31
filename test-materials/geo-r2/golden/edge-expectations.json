@@ -1,0 +1,157 @@
+{
+  "is_synthetic": true,
+  "scope": "隔离反例，不混入主报表",
+  "cases": [
+    {
+      "sample_id": "E01",
+      "expected": {
+        "valid": false,
+        "recommendation": null,
+        "action": "保留失败和预留，先核对原任务，不能重提或记为零"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E02",
+      "expected": {
+        "valid": true,
+        "recommendation": "not_mentioned",
+        "citation_denominator": true,
+        "official_citation_numerator": false
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E03",
+      "expected": {
+        "valid": true,
+        "recommendation": "recommended",
+        "citation_denominator": false,
+        "official_citation": "unknown"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E04",
+      "expected": {
+        "valid": true,
+        "recommendation": "mentioned",
+        "citation_denominator": true,
+        "official_citation_numerator": false
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E05",
+      "expected": {
+        "valid": true,
+        "recommendation": "not_mentioned",
+        "action": "澄岳咨询是异名实体，不是澄岳数析或其别名"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E06",
+      "expected": {
+        "valid": true,
+        "recommendation": "not_recommended",
+        "recommendation_known_denominator": true
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E07",
+      "expected": {
+        "valid": false,
+        "recommendation": null,
+        "action": "截断证据不足，不能按前半句标完整推荐"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E08",
+      "expected": {
+        "valid": true,
+        "recommendation": "unknown",
+        "action": "原始回答仍可查；分析失败不能写成未提及或无推荐；重试经过预算及核对"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E09",
+      "expected": {
+        "valid": false,
+        "action": "采集时间未知，不进入完整有效回答，不补造时间"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E10",
+      "expected": {
+        "valid": true,
+        "local_date": "2026-10-04",
+        "local_time": "00:30",
+        "action": "按项目时区计算日期，不能放入10月03日"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E11",
+      "expected": {
+        "valid": true,
+        "comparable": false,
+        "action": "关键采样条件未知，仅供观察"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E12",
+      "expected": {
+        "valid": true,
+        "comparable": false,
+        "action": "问题版本变化，与v1分开展示"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E13",
+      "expected": {
+        "valid": true,
+        "action": "独立API对照，不与人工导入或消费端合并；并非真实模型调用"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E14",
+      "expected": {
+        "valid": true,
+        "duplicate_of": "B-01-01",
+        "action": "重复刷新不增加样本量、不重新计费"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E15",
+      "expected": {
+        "valid": true,
+        "citation_denominator": false,
+        "official_citation": "unknown",
+        "action": "仅来源列表，正文映射不支持，显示来源覆盖"
+      },
+      "include_in_primary_metrics": false
+    },
+    {
+      "sample_id": "E16",
+      "expected": {
+        "valid": true,
+        "visible_to": "user-b-owner",
+        "forbidden_to": [
+          "user-a-owner",
+          "user-a-operator"
+        ],
+        "action": "A不可读、搜索或下载；错误响应不泄露正文和资源是否存在"
+      },
+      "include_in_primary_metrics": false
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "is_synthetic": true,
+  "tasks": [
+    {
+      "task_id": "T01",
+      "workspace_id": "ws-chengyue",
+      "is_synthetic": true,
+      "type": "correction",
+      "target_url": "https://chengyue.example/product",
+      "position": "产品说明正文",
+      "evidence_ids": [
+        "B-01-08",
+        "product-before"
+      ],
+      "fact_ids": [
+        "F02"
+      ],
+      "affected_question_ids": [
+        "Q08"
+      ],
+      "draft_version": "draft-v1",
+      "approval_status": "待客户审核",
+      "approved_text": null,
+      "status": "待审核",
+      "verification_conditions": [
+        {
+          "kind": "text_absent",
+          "text": "澄岳数析只支持公有云部署。"
+        },
+        {
+          "kind": "text_present",
+          "text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。"
+        }
+      ],
+      "required_for_comparison": true,
+      "hypothesis": "修改可能帮助回答准确，但原因与效果需要真实复查，不能由页面修改推定",
+      "proposed_text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。"
+    },
+    {
+      "task_id": "T02",
+      "workspace_id": "ws-chengyue",
+      "is_synthetic": true,
+      "type": "addition",
+      "target_url": "https://chengyue.example/product",
+      "position": "产品说明正文",
+      "evidence_ids": [
+        "product-before",
+        "B-01-06"
+      ],
+      "fact_ids": [
+        "F05",
+        "F06",
+        "F07"
+      ],
+      "affected_question_ids": [
+        "Q01",
+        "Q02",
+        "Q04",
+        "Q05",
+        "Q06"
+      ],
+      "draft_version": "draft-v1",
+      "approval_status": "待客户审核",
+      "approved_text": null,
+      "status": "待审核",
+      "verification_conditions": [
+        {
+          "kind": "text_present",
+          "text": "问策面向有多源经营数据及 IT 运维能力的企业；数据接入需核对接口或只读账号权限，部署周期取决于数据整理和环境条件，不承诺一天上线。"
+        }
+      ],
+      "required_for_comparison": true,
+      "hypothesis": "修改可能帮助回答准确，但原因与效果需要真实复查，不能由页面修改推定",
+      "proposed_text": "问策面向有多源经营数据及 IT 运维能力的企业；数据接入需核对接口或只读账号权限，部署周期取决于数据整理和环境条件，不承诺一天上线。"
+    },
+    {
+      "task_id": "T03",
+      "workspace_id": "ws-chengyue",
+      "is_synthetic": true,
+      "type": "access_repair",
+      "target_url": "https://chengyue.example/solutions/private",
+      "position": "HTTP响应、robots和正文",
+      "evidence_ids": [
+        "access-before",
+        "robots-before"
+      ],
+      "fact_ids": [
+        "F02"
+      ],
+      "affected_question_ids": [
+        "Q04",
+        "Q08"
+      ],
+      "draft_version": "draft-v1",
+      "approval_status": "待客户审核",
+      "approved_text": null,
+      "status": "待审核",
+      "verification_conditions": [
+        {
+          "kind": "http_status",
+          "equals": 200
+        },
+        {
+          "kind": "readable_body",
+          "text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。"
+        },
+        {
+          "kind": "no_noindex"
+        },
+        {
+          "kind": "robots_allows",
+          "path": "/solutions/private"
+        }
+      ],
+      "required_for_comparison": true,
+      "hypothesis": "修改可能帮助回答准确，但原因与效果需要真实复查，不能由页面修改推定",
+      "proposed_text": null
+    },
+    {
+      "task_id": "T04",
+      "workspace_id": "ws-chengyue",
+      "is_synthetic": true,
+      "type": "third_party_correction",
+      "target_url": "https://directory.example/vendors/chengyue",
+      "position": "厂商介绍正文",
+      "evidence_ids": [
+        "B-01-08",
+        "third-party-before"
+      ],
+      "fact_ids": [
+        "F02"
+      ],
+      "affected_question_ids": [
+        "Q08"
+      ],
+      "draft_version": "draft-v1",
+      "approval_status": "演练中已审核",
+      "approved_text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。",
+      "status": "等待外部处理",
+      "verification_conditions": [
+        {
+          "kind": "public_third_party_page_changed"
+        },
+        {
+          "kind": "text_absent",
+          "text": "澄岳数析只支持公有云部署。"
+        },
+        {
+          "kind": "text_present",
+          "text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。"
+        }
+      ],
+      "required_for_comparison": false,
+      "hypothesis": "修改可能帮助回答准确，但原因与效果需要真实复查，不能由页面修改推定",
+      "proposed_text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。"
+    },
+    {
+      "task_id": "T05",
+      "workspace_id": "ws-chengyue",
+      "is_synthetic": true,
+      "type": "missing_facts",
+      "target_url": "https://chengyue.example/product",
+      "position": "产品说明正文",
+      "evidence_ids": [
+        "B-01-10"
+      ],
+      "fact_ids": [
+        "F09",
+        "F10"
+      ],
+      "affected_question_ids": [
+        "Q04",
+        "Q08"
+      ],
+      "draft_version": "draft-v1",
+      "approval_status": "待补资料",
+      "approved_text": null,
+      "status": "待补资料",
+      "verification_conditions": [
+        {
+          "kind": "customer_confirmed_material_required"
+        }
+      ],
+      "required_for_comparison": false,
+      "hypothesis": "修改可能帮助回答准确，但原因与效果需要真实复查，不能由页面修改推定",
+      "proposed_text": null
+    }
+  ],
+  "simulation": {
+    "claimed_published_at": "2026-10-03T10:00:00Z",
+    "first_all_conditions_verified_at": "2026-10-04T02:00:00Z",
+    "release_version": "release-v1",
+    "release_tasks": [
+      "T01",
+      "T02",
+      "T03"
+    ],
+    "pending_tasks": [
+      "T04",
+      "T05"
+    ],
+    "review_windows": [
+      [
+        "2026-10-11",
+        "2026-10-12",
+        "2026-10-13"
+      ],
+      [
+        "2026-10-18",
+        "2026-10-19",
+        "2026-10-20"
+      ]
+    ],
+    "third_party_receipt": {
+      "id": "synthetic-receipt-04",
+      "status": "submitted_only",
+      "note": "未证明页面已改变；after快照仅供另一独立分支使用"
+    },
+    "approval_events": [
+      {
+        "task_id": "T01",
+        "draft_version": "draft-v1",
+        "actor": "fixture-customer",
+        "approved_at": "2026-10-03T08:00:00Z",
+        "approved_text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。",
+        "approved_conditions": [
+          {
+            "kind": "text_absent",
+            "text": "澄岳数析只支持公有云部署。"
+          },
+          {
+            "kind": "text_present",
+            "text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。"
+          }
+        ],
+        "is_synthetic": true
+      },
+      {
+        "task_id": "T02",
+        "draft_version": "draft-v1",
+        "actor": "fixture-customer",
+        "approved_at": "2026-10-03T08:00:00Z",
+        "approved_text": "问策面向有多源经营数据及 IT 运维能力的企业；数据接入需核对接口或只读账号权限，部署周期取决于数据整理和环境条件，不承诺一天上线。",
+        "approved_conditions": [
+          {
+            "kind": "text_present",
+            "text": "问策面向有多源经营数据及 IT 运维能力的企业；数据接入需核对接口或只读账号权限，部署周期取决于数据整理和环境条件，不承诺一天上线。"
+          }
+        ],
+        "is_synthetic": true
+      },
+      {
+        "task_id": "T03",
+        "draft_version": "draft-v1",
+        "actor": "fixture-customer",
+        "approved_at": "2026-10-03T08:00:00Z",
+        "approved_text": null,
+        "approved_conditions": [
+          {
+            "kind": "http_status",
+            "equals": 200
+          },
+          {
+            "kind": "readable_body",
+            "text": "澄岳数析支持私有化部署；离线环境须先核对授权与运维条件。"
+          },
+          {
+            "kind": "no_noindex"
+          },
+          {
+            "kind": "robots_allows",
+            "path": "/solutions/private"
+          }
+        ],
+        "is_synthetic": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,754 @@
+{
+  "is_synthetic": true,
+  "calculation_version": "metrics-v1",
+  "label_version": "golden-v1",
+  "notice": "仅为人工导入合成数据；不证明真实消费端效果或因果关系",
+  "periods": [
+    {
+      "scope": {
+        "period": "baseline",
+        "group": "all",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 30,
+      "valid": 30,
+      "recommendation_counts": {
+        "recommended": 3,
+        "mentioned": 9,
+        "not_mentioned": 12,
+        "not_recommended": 3,
+        "unknown": 3
+      },
+      "valid_coverage": {
+        "numerator": 30,
+        "denominator": 30,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 3,
+        "denominator": 27,
+        "percent": 11.11
+      },
+      "recommendation_coverage": {
+        "numerator": 27,
+        "denominator": 30,
+        "percent": 90.0
+      },
+      "facts": {
+        "numerator": 6,
+        "denominator": 9,
+        "percent": 66.67
+      },
+      "fact_counts": {
+        "consistent": 6,
+        "conflict": 3,
+        "unknown": 3
+      },
+      "fact_coverage": {
+        "numerator": 9,
+        "denominator": 12,
+        "percent": 75.0
+      },
+      "official_citation": {
+        "numerator": 3,
+        "denominator": 30,
+        "percent": 10.0
+      },
+      "citation_coverage": {
+        "numerator": 30,
+        "denominator": 30,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-1",
+        "group": "all",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 30,
+      "valid": 30,
+      "recommendation_counts": {
+        "recommended": 9,
+        "mentioned": 12,
+        "not_mentioned": 6,
+        "not_recommended": 0,
+        "unknown": 3
+      },
+      "valid_coverage": {
+        "numerator": 30,
+        "denominator": 30,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 9,
+        "denominator": 27,
+        "percent": 33.33
+      },
+      "recommendation_coverage": {
+        "numerator": 27,
+        "denominator": 30,
+        "percent": 90.0
+      },
+      "facts": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "fact_counts": {
+        "consistent": 9,
+        "conflict": 0,
+        "unknown": 3
+      },
+      "fact_coverage": {
+        "numerator": 9,
+        "denominator": 12,
+        "percent": 75.0
+      },
+      "official_citation": {
+        "numerator": 12,
+        "denominator": 30,
+        "percent": 40.0
+      },
+      "citation_coverage": {
+        "numerator": 30,
+        "denominator": 30,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-2",
+        "group": "all",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 30,
+      "valid": 30,
+      "recommendation_counts": {
+        "recommended": 9,
+        "mentioned": 9,
+        "not_mentioned": 6,
+        "not_recommended": 3,
+        "unknown": 3
+      },
+      "valid_coverage": {
+        "numerator": 30,
+        "denominator": 30,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 9,
+        "denominator": 27,
+        "percent": 33.33
+      },
+      "recommendation_coverage": {
+        "numerator": 27,
+        "denominator": 30,
+        "percent": 90.0
+      },
+      "facts": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "fact_counts": {
+        "consistent": 9,
+        "conflict": 0,
+        "unknown": 3
+      },
+      "fact_coverage": {
+        "numerator": 9,
+        "denominator": 12,
+        "percent": 75.0
+      },
+      "official_citation": {
+        "numerator": 9,
+        "denominator": 30,
+        "percent": 30.0
+      },
+      "citation_coverage": {
+        "numerator": 30,
+        "denominator": 30,
+        "percent": 100.0
+      }
+    }
+  ],
+  "groups": [
+    {
+      "scope": {
+        "period": "baseline",
+        "group": "行业发现",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 12,
+      "valid": 12,
+      "recommendation_counts": {
+        "recommended": 0,
+        "mentioned": 3,
+        "not_mentioned": 9,
+        "not_recommended": 0,
+        "unknown": 0
+      },
+      "valid_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 0,
+        "denominator": 12,
+        "percent": 0.0
+      },
+      "recommendation_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      },
+      "facts": {
+        "numerator": 0,
+        "denominator": 0,
+        "percent": null
+      },
+      "fact_counts": {
+        "consistent": 0,
+        "conflict": 0,
+        "unknown": 0
+      },
+      "fact_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "percent": null
+      },
+      "official_citation": {
+        "numerator": 0,
+        "denominator": 12,
+        "percent": 0.0
+      },
+      "citation_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "baseline",
+        "group": "方案比较",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 9,
+      "valid": 9,
+      "recommendation_counts": {
+        "recommended": 3,
+        "mentioned": 0,
+        "not_mentioned": 3,
+        "not_recommended": 3,
+        "unknown": 0
+      },
+      "valid_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "recommendation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "facts": {
+        "numerator": 3,
+        "denominator": 3,
+        "percent": 100.0
+      },
+      "fact_counts": {
+        "consistent": 3,
+        "conflict": 0,
+        "unknown": 0
+      },
+      "fact_coverage": {
+        "numerator": 3,
+        "denominator": 3,
+        "percent": 100.0
+      },
+      "official_citation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "citation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "baseline",
+        "group": "品牌核实",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 9,
+      "valid": 9,
+      "recommendation_counts": {
+        "recommended": 0,
+        "mentioned": 6,
+        "not_mentioned": 0,
+        "not_recommended": 0,
+        "unknown": 3
+      },
+      "valid_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 0,
+        "denominator": 6,
+        "percent": 0.0
+      },
+      "recommendation_coverage": {
+        "numerator": 6,
+        "denominator": 9,
+        "percent": 66.67
+      },
+      "facts": {
+        "numerator": 3,
+        "denominator": 6,
+        "percent": 50.0
+      },
+      "fact_counts": {
+        "consistent": 3,
+        "conflict": 3,
+        "unknown": 3
+      },
+      "fact_coverage": {
+        "numerator": 6,
+        "denominator": 9,
+        "percent": 66.67
+      },
+      "official_citation": {
+        "numerator": 0,
+        "denominator": 9,
+        "percent": 0.0
+      },
+      "citation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-1",
+        "group": "行业发现",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 12,
+      "valid": 12,
+      "recommendation_counts": {
+        "recommended": 6,
+        "mentioned": 3,
+        "not_mentioned": 3,
+        "not_recommended": 0,
+        "unknown": 0
+      },
+      "valid_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 6,
+        "denominator": 12,
+        "percent": 50.0
+      },
+      "recommendation_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      },
+      "facts": {
+        "numerator": 0,
+        "denominator": 0,
+        "percent": null
+      },
+      "fact_counts": {
+        "consistent": 0,
+        "conflict": 0,
+        "unknown": 0
+      },
+      "fact_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "percent": null
+      },
+      "official_citation": {
+        "numerator": 6,
+        "denominator": 12,
+        "percent": 50.0
+      },
+      "citation_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-1",
+        "group": "方案比较",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 9,
+      "valid": 9,
+      "recommendation_counts": {
+        "recommended": 3,
+        "mentioned": 3,
+        "not_mentioned": 3,
+        "not_recommended": 0,
+        "unknown": 0
+      },
+      "valid_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "recommendation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "facts": {
+        "numerator": 3,
+        "denominator": 3,
+        "percent": 100.0
+      },
+      "fact_counts": {
+        "consistent": 3,
+        "conflict": 0,
+        "unknown": 0
+      },
+      "fact_coverage": {
+        "numerator": 3,
+        "denominator": 3,
+        "percent": 100.0
+      },
+      "official_citation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "citation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-1",
+        "group": "品牌核实",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 9,
+      "valid": 9,
+      "recommendation_counts": {
+        "recommended": 0,
+        "mentioned": 6,
+        "not_mentioned": 0,
+        "not_recommended": 0,
+        "unknown": 3
+      },
+      "valid_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 0,
+        "denominator": 6,
+        "percent": 0.0
+      },
+      "recommendation_coverage": {
+        "numerator": 6,
+        "denominator": 9,
+        "percent": 66.67
+      },
+      "facts": {
+        "numerator": 6,
+        "denominator": 6,
+        "percent": 100.0
+      },
+      "fact_counts": {
+        "consistent": 6,
+        "conflict": 0,
+        "unknown": 3
+      },
+      "fact_coverage": {
+        "numerator": 6,
+        "denominator": 9,
+        "percent": 66.67
+      },
+      "official_citation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "citation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-2",
+        "group": "行业发现",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 12,
+      "valid": 12,
+      "recommendation_counts": {
+        "recommended": 6,
+        "mentioned": 0,
+        "not_mentioned": 3,
+        "not_recommended": 3,
+        "unknown": 0
+      },
+      "valid_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 6,
+        "denominator": 12,
+        "percent": 50.0
+      },
+      "recommendation_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      },
+      "facts": {
+        "numerator": 0,
+        "denominator": 0,
+        "percent": null
+      },
+      "fact_counts": {
+        "consistent": 0,
+        "conflict": 0,
+        "unknown": 0
+      },
+      "fact_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "percent": null
+      },
+      "official_citation": {
+        "numerator": 3,
+        "denominator": 12,
+        "percent": 25.0
+      },
+      "citation_coverage": {
+        "numerator": 12,
+        "denominator": 12,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-2",
+        "group": "方案比较",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 9,
+      "valid": 9,
+      "recommendation_counts": {
+        "recommended": 3,
+        "mentioned": 3,
+        "not_mentioned": 3,
+        "not_recommended": 0,
+        "unknown": 0
+      },
+      "valid_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "recommendation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "facts": {
+        "numerator": 3,
+        "denominator": 3,
+        "percent": 100.0
+      },
+      "fact_counts": {
+        "consistent": 3,
+        "conflict": 0,
+        "unknown": 0
+      },
+      "fact_coverage": {
+        "numerator": 3,
+        "denominator": 3,
+        "percent": 100.0
+      },
+      "official_citation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "citation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      }
+    },
+    {
+      "scope": {
+        "period": "review-2",
+        "group": "品牌核实",
+        "workspace_id": "ws-chengyue",
+        "source_type": "manual_import",
+        "channel_id": "fixture-manual-a",
+        "platform": "doubao_web_simulated",
+        "is_synthetic": true
+      },
+      "planned": 9,
+      "valid": 9,
+      "recommendation_counts": {
+        "recommended": 0,
+        "mentioned": 6,
+        "not_mentioned": 0,
+        "not_recommended": 0,
+        "unknown": 3
+      },
+      "valid_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      },
+      "recommendation": {
+        "numerator": 0,
+        "denominator": 6,
+        "percent": 0.0
+      },
+      "recommendation_coverage": {
+        "numerator": 6,
+        "denominator": 9,
+        "percent": 66.67
+      },
+      "facts": {
+        "numerator": 6,
+        "denominator": 6,
+        "percent": 100.0
+      },
+      "fact_counts": {
+        "consistent": 6,
+        "conflict": 0,
+        "unknown": 3
+      },
+      "fact_coverage": {
+        "numerator": 6,
+        "denominator": 9,
+        "percent": 66.67
+      },
+      "official_citation": {
+        "numerator": 3,
+        "denominator": 9,
+        "percent": 33.33
+      },
+      "citation_coverage": {
+        "numerator": 9,
+        "denominator": 9,
+        "percent": 100.0
+      }
+    }
+  ],
+  "question_changes": [
+    {
+      "question_id": "Q02",
+      "baseline": "mentioned",
+      "review-1": "mentioned",
+      "review-2": "not_recommended",
+      "note": "保留负向类别变化"
+    },
+    {
+      "question_id": "Q04",
+      "baseline_official_citation": false,
+      "review-1_official_citation": true,
+      "review-2_official_citation": false,
+      "note": "推荐不变但引用回落"
+    },
+    {
+      "question_id": "Q03",
+      "note": "始终未提及；未变化主题，不构成严格对照"
+    },
+    {
+      "question_id": "Q07",
+      "note": "始终未提及；不补造改善"
+    }
+  ]
+}

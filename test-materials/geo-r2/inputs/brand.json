@@ -1,0 +1,72 @@
+{
+  "notice": "合成资料；不含真实企业授权、账号或凭证",
+  "primary": {
+    "fixture_version": "1.0",
+    "is_synthetic": true,
+    "workspace_id": "ws-chengyue",
+    "brand_id": "brand-chengyue",
+    "brand_version": "brand-v1",
+    "name": "澄岳数析",
+    "aliases": [
+      "澄岳数据分析",
+      "问策（澄岳数析产品）"
+    ],
+    "product": "问策经营分析平台",
+    "official_domain": "chengyue.example",
+    "official_url": "https://chengyue.example/",
+    "target_customers": [
+      "有官网且可修改内容的 B2B 软件企业",
+      "有多源经营数据和 IT 运维能力的中型企业"
+    ],
+    "competitors": [
+      {
+        "name": "衡舟分析",
+        "url": "https://hengzhou.example/"
+      },
+      {
+        "name": "知棱 BI",
+        "url": "https://zhileng.example/"
+      }
+    ],
+    "selected_page_ids": [
+      "P-HOME",
+      "P-PRODUCT",
+      "P-ACCESS"
+    ],
+    "max_selected_pages": 10,
+    "users": [
+      {
+        "id": "user-a-owner",
+        "role": "owner"
+      },
+      {
+        "id": "user-a-operator",
+        "role": "operator"
+      }
+    ]
+  },
+  "secondary": {
+    "is_synthetic": true,
+    "workspace_id": "ws-isolation",
+    "brand_id": "brand-isolation",
+    "brand_version": "brand-b-v1",
+    "name": "霁川工单",
+    "official_domain": "jichuan.example",
+    "users": [
+      {
+        "id": "user-b-owner",
+        "role": "owner"
+      }
+    ],
+    "probe_question": {
+      "question_id": "QB01",
+      "question_version": "questions-b-v1",
+      "text": "霁川工单适合哪些售后服务团队？"
+    },
+    "probe_resource_ids": [
+      "E16",
+      "report-b-private",
+      "export-b-private"
+    ]
+  }
+}

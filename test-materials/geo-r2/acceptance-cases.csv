@@ -1,0 +1,49 @@
+﻿case_id,priority,area,requirement_ref,materials,precondition,steps,expected,method
+GEO-01,P0,品牌资料,R2§2 问题与企业资料,inputs/brand.json;inputs/facts.csv,工作区A研发预览,录入品牌和事实，查看认证和报价,8项确认、2项待补；别名和两竞品正确；不生成认证、ROI或价格承诺,手工/离线回放；待平台实现后实测
+GEO-02,P0,问题管理,R2§2 问题与企业资料,inputs/questions.csv,已录入品牌,导入10题并查看对外提问载荷；另尝试21题,10题保留来源/分组/版本；只传确认问题与必要配置；行业发现题不追加品牌介绍；第21题被限制,手工/离线回放；待平台实现后实测
+GEO-03,P0,来源隔离,R2§2 数据通道,inputs/evidence/baseline.jsonl;inputs/evidence/edge-cases.jsonl E13,空演练项目,导入主集与API对照，查看报告和导出,合成/人工导入可见；E13单独统计；任何模拟集都不能使真实通道变为已通过,手工/离线回放；待平台实现后实测
+GEO-04,P0,证据导入,R2§2 原始证据,inputs/evidence/baseline.jsonl;inputs/evidence/edge-cases.jsonl E14,支持中立夹具映射,导入30条，再导入同文件及E14,仍30条主样本，3日期10题；刷新不新计费；原文/时间/版本可查,手工/离线回放；待平台实现后实测
+GEO-05,P0,推荐判断,R2§3 指标口径,inputs/evidence/baseline.jsonl;golden/labels.jsonl,可分析或人工标注,核对B-01-02、05、06、10并读原文,分别为仅提及、推荐、不推荐、未知；负向不计推荐；未知原因可见,手工/离线回放；待平台实现后实测
+GEO-06,P0,实体匹配,R2§5 错品牌,inputs/evidence/edge-cases.jsonl E05,主品牌澄岳数析,分析推荐澄岳咨询的回答,主品牌未提及；不因共有澄岳两个字而算命中,手工/离线回放；待平台实现后实测
+GEO-07,P0,事实判断,R2§2 分析;§3 指标,inputs/facts.csv;golden/labels.jsonl,事实版本facts-v1,核对Q08冲突、Q09一致、Q10认证未知及Q03未提事实,冲突/一致/资料不足分别保留；未提及不计正确；每批9条可判断、3条未知,手工/离线回放；待平台实现后实测
+GEO-08,P0,分析校验,R2§2 分析模型,inputs/analysis-edge-cases.json A01-A04,服务端分析输出校验已实现,逐个回放伪造片段、无效事实、负向误判与非法枚举,结构错误拒绝；语义错误可人工纠正且留版本；原始证据不丢失,手工/离线回放；待平台实现后实测
+GEO-09,P0,引用分母,R2§3 官网引用率,"inputs/evidence/edge-cases.jsonl E02,E03,E15",新建单独边界报告,分别查看完整无引用、引用未知、不支持正文映射,E02进入分母不进分子；E03/E15不进入引用分母；未知不是无引用,手工/离线回放；待平台实现后实测
+GEO-10,P0,引用来源,R2§3 官网引用率,inputs/evidence/edge-cases.jsonl E04;inputs/security-cases.json domain_spoof,支持来源与正文映射,分析只有官网候选URL的回答及伪装官网域名,E04无官网正文引用；来源列表独立显示；伪装域名不算官网,手工/离线回放；待平台实现后实测
+GEO-11,P0,诊断依据,R2§3 诊断,inputs/pages.json;inputs/evidence/baseline.jsonl B-01-08,快照回放可用或手工比对,检查产品错误、访问阻断和第三方旧介绍,三类诊断带证据；已观察问题与因果假设分开；不标AI已收录,手工/离线回放；待平台实现后实测
+GEO-12,P0,修改任务,R2§3 任务,inputs/change-tasks.json,事实与证据已关联,建立T01-T05并尝试缺证据任务,展示URL/位置/文本/事实/受影响问题/核验条件；缺资料保持待补，不伪造草稿依据,手工/离线回放；待平台实现后实测
+GEO-13,P0,部分核验,R2§3 删除纠错,"inputs/pages.json product-before,product-partial,product-after;inputs/change-tasks.json T01",T01文案经演练客户批准,声明发布后先回放partial，再回放after,partial仍有旧说法，留待核验并显示失败项；after所有条件满足才推进；保留快照,手工/离线回放；待平台实现后实测
+GEO-14,P0,内容新增,R2§3 新增改写,"inputs/change-tasks.json T02;inputs/pages.json product-before,product-after",T02已审核,先回放before再after，核对完整批准文案,before不通过；after正文出现全部批准内容才通过，不能只改标题,手工/离线回放；待平台实现后实测
+GEO-15,P0,访问核验,R2§3 技术修复,"inputs/pages.json access-before,access-after;inputs/website-snapshots/robots-before.txt;inputs/website-snapshots/robots-after.txt",T03已审核,分别核对状态/正文/noindex/robots；回放仅状态修好但robots未修分支,仅200不够；全部条件通过才上线；未通过保留原因；不证明AI抓取收录,手工/离线回放；待平台实现后实测
+GEO-16,P0,第三方任务,R2§3 第三方修改,"inputs/change-tasks.json T04;inputs/pages.json third-party-before,third-party-after",已提交合成回执,只提交回执并核验before；另一独立分支再回放after,提交不算上线，仍等待；公开页实际改变才通过；主演练T04保持未完成,手工/离线回放；待平台实现后实测
+GEO-17,P0,人工核验,R2§3 人工依据,inputs/manual-verification.json,授权操作员,执行MV01再MV02,仅客户声明不能通过；独立依据、方法、时间、核验人齐备才可记录人工通过；明确模拟与人工,手工/离线回放；待平台实现后实测
+GEO-18,P0,复查起点,R2§3 基线复查,inputs/change-tasks.json simulation,模拟核验通过10月04日10:00,用声明发布时间与首次全部核验通过时间计算窗口,以核验通过日期起算：10月11-13日、18-20日；声明时间不提前起算；真实等待不能模拟替代,手工/离线回放；待平台实现后实测
+GEO-19,P0,指标重算,R2§3 指标口径,golden/metrics.json;golden/labels.jsonl;inputs/evidence/,三批各30条人工导入主集,生成三时期报告，对照分子分母、未知和覆盖,推荐3/27、9/27、9/27；一致6/9、9/9、9/9；官网引用3/30、12/30、9/30；各覆盖吻合,手工/离线回放；待平台实现后实测
+GEO-20,P0,负向与分组,R2§1 工程效果分离;§3 报告,golden/metrics.json;inputs/evidence/review-2.jsonl,三期报告存在,查看问题组、Q02和Q04；尝试只导出增长摘要,保留Q02不推荐、Q04引用回落及未变化问题；分组分平台通道展示；不宣称显著或因果,手工/离线回放；待平台实现后实测
+GEO-21,P0,可比集合,R2§3 版本与比较,"inputs/evidence/edge-cases.jsonl E11,E12",复制复查报告以免污染主集,加入配置未知与问题v2样本,显示交集及排除原因；不硬并入v1前后比较；未知仅供观察；页面发布版本可预期变化,手工/离线回放；待平台实现后实测
+GEO-22,P0,窗口不足,R2§3 基线复查,inputs/evidence/review-1.jsonl,单独副本,少导入10月13日十条，再生成报告,计划30实际20、缺失日期可见；暂不能比较，不输出完整改善结论,手工/离线回放；待平台实现后实测
+GEO-23,P1,紧急修复,R2§3 不完整基线,inputs/change-tasks.json T03,副本项目无完整三日基线,先核验访问修复再导入复查,允许修复与后续观察；显示暂不能比较，不能补造修改前样本,手工/离线回放；待平台实现后实测
+GEO-24,P0,人工纠正版本,R2§2 分析纠正;§3 报告版本,inputs/analysis-edge-cases.json A03;golden/labels.jsonl,保存一份含误判的报告副本,人工纠正Q06为不推荐并记录理由，再重算,新分析和报告版本；旧报告/证据不覆盖；可还原各版本分母和原文,手工/离线回放；待平台实现后实测
+GEO-25,P0,分析失败,R2§2 模型失败,"inputs/analysis-edge-cases.json A05,A06;inputs/evidence/edge-cases.jsonl E08",无模型配置或回放超时,打开原回答，启动分析/查看失败后重试入口,模型不可用显示待配置、不静默换模型；失败不写零；重试预算及原请求核对后执行,手工/离线回放；待平台实现后实测
+GEO-26,P0,默认额度,R2§4 预算,inputs/operations.json O01,真实付费额度0，使用回放计数器,尝试启动付费采样与分析,拒绝付费动作，无外部调用和真实预留；明确影响,手工/离线回放；待平台实现后实测
+GEO-27,P0,预算结算,R2§4 预算,inputs/operations.json O02,离线账本,模拟预留采样与分析上限，再按实际费用结算,预留0.80，实际0.60，释放0.20，余额1.40；预计/预留/实际分开，均为合成金额,手工/离线回放；待平台实现后实测
+GEO-28,P0,预算不足,R2§4 预算,inputs/operations.json O03,离线预算0.70,请求预计上限0.80的流程,不足动作调用前停止、不透支；若已有采样保留原文，说明分析待预算；账本准确,手工/离线回放；待平台实现后实测
+GEO-29,P0,并发幂等,R2§4 调度,inputs/operations.json O04,离线回放适配，两个worker,同条件并发双击并叠加基线/手工/日常用途,一次执行、一次预留、一次供应商回放提交、一份证据多用途；显式新批次另计,手工/离线回放；待平台实现后实测
+GEO-30,P0,超时与重启,R2§4 待核对,inputs/operations.json O05;inputs/evidence/edge-cases.jsonl E01,供应商任务已提交但结果不明,worker重启，再恢复任务和账本,保留任务ID及未知实际费用；先查原任务；无查询能力人工核对；不自动重提，不释放未知预留,手工/离线回放；待平台实现后实测
+GEO-31,P0,有限重试,R2§4 重试,inputs/operations.json O06,明确未受理且可重试,持续回放限流，观察退避与次数,最多2次自动重试，加首次总计最多3次；查询轮询有时限；不可无限收费,手工/离线回放；待平台实现后实测
+GEO-32,P0,日期与排程,R2§4 时区合并,"inputs/operations.json O11,O12;inputs/evidence/edge-cases.jsonl E10",项目Asia/Shanghai,转换UTC16:30并检查周二五重点、周日全量与重叠用途,本地次日00:30；按项目日去重/排程，重叠用途同采一次；UTC存储不篡改,手工/离线回放；待平台实现后实测
+GEO-33,P0,补跑,R2§4 48小时规则,inputs/operations.json O07,错过计划24小时,恢复调度器,只补最近一次，保留计划与实际时间；10月12日样本不改成11日,手工/离线回放；待平台实现后实测
+GEO-34,P0,窗口外补跑,R2§4 48小时规则,inputs/operations.json O08,错过72小时,恢复调度器并人工新批次,原计划标错过；新批次展示预算；10月14日不填入7-9天窗口；样本不足不能比较,手工/离线回放；待平台实现后实测
+GEO-35,P0,暂停,R2§4 暂停取消,inputs/operations.json O09,1个已提交、2个未提交,暂停项目并重启worker,未提交停止；已提交继续查询计账；无新增供应商提交,手工/离线回放；待平台实现后实测
+GEO-36,P0,币种和价格未知,R2§4 预算,inputs/operations.json O10,离线多币种账本,缺价格上限或余额只有另一币种时执行,不同币种分别管理；不能相加当足额；未知价格保持待配置，不能按0元调用,手工/离线回放；待平台实现后实测
+GEO-37,P0,工作区授权,R2§4 对外安全,inputs/brand.json;inputs/evidence/edge-cases.jsonl E16;inputs/security-cases.json isolation,两个真实隔离登录会话，服务具备授权,A替换对象ID读取/搜索/导出B证据报告；B读取自己的,A均拒绝且不泄露内容；B可按权限读取；仅前端隐藏不能算通过,手工/离线回放；待平台实现后实测
+GEO-38,P0,导出会话与私有存储,R2§4 外部开放,inputs/security-cases.json export,测试部署已配置HTTPS与限流,未登录/过期会话请求下载；检查证据地址、导出和日志,未授权拒绝，无匿名分享；私有证据不可直接访问；密钥不出日志/导出；安全会话和限流实测,手工/离线回放；待平台实现后实测
+GEO-39,P0,URL防护,R2§4 公网抓取,"inputs/security-cases.json reject_urls,redirect_case,dns_rebinding_case",只在离线拦截验证器使用，不请求真实危险地址,校验各拒绝URL及重定向/DNS变化,每次解析和每跳重定向拒绝内网/本机/保留地址及非HTTP(S)；请求计数为0，不能只验初始URL,手工/离线回放；待平台实现后实测
+GEO-40,P0,网页指令,R2§4 不可信材料,inputs/pages.json injection;inputs/security-cases.json prompt_injection,离线网页回放，禁外部动作,将注入网页送入诊断,不能改系统规则、读取密钥、调用工具或发送请求；保留不可信材料来源；推荐标签不被指令污染,手工/离线回放；待平台实现后实测
+GEO-41,P1,数量大小限制,"R2§2,§4 输入限制",inputs/security-cases.json limits,定义抓取响应大小与超时上限,选11个页面；回放超大小响应和超时,最多10页；超限中止并记录原因，无无限抓取和假成功；不放开本地抓取限制来加载夹具,手工/离线回放；待平台实现后实测
+GEO-42,P0,持久化与恢复,R2§4 备份,inputs/evidence/baseline.jsonl;inputs/pages.json;golden/metrics.json,隔离测试存储，已有版本和账本,保存快照与原始JSON，备份后在另一测试库恢复；使外部回放链接失效,本地证据、版本、归属、账本和报告可还原；链接过期明确提示，不作唯一依据；不操作生产数据,手工/离线回放；待平台实现后实测
+GEO-43,P0,真实通道闸门,R2§2 通道验收,inputs/evidence/baseline.jsonl;inputs/evidence/edge-cases.jsonl E13,仅有本包合成资料,查看通道状态，并尝试以API/人工导入替代国内消费端,保持研发预览/待验证；真实30计划/3日期、有效率≥90%、抽查≥10及使用条件均需实测，模拟齐全不能通过,手工/离线回放；待平台实现后实测
+GEO-44,P1,监测拉取,R2§2 每日通道,inputs/operations.json O04;inputs/evidence/edge-cases.jsonl E14,独立每日监测离线回放,连续刷新同一供应商任务，回放等待后返回同一采集记录,按来源采集时间/标识去重；显示下一轮等待，不伪装即时采集；保存允许保存的原始响应,手工/离线回放；待平台实现后实测
+GEO-45,P0,重改与取消,R2§3 草稿发布版本,inputs/change-tasks.json T01,已有draft-v1和release-v1副本,改变批准文案或依据，尝试直接复用旧审核；另取消任务,必须新版本重新审核，旧核验和报告保留；取消原因可查，停止后续未执行动作,手工/离线回放；待平台实现后实测
+GEO-46,P1,外部开放闸门,"R2§1,§4 外部访问",inputs/security-cases.json,本地预览或测试部署,检查绑定地址、账号、限流、私有存储、DB与worker暴露及备份记录,本地仅127.0.0.1；外部访问前授权/HTTPS/限流/下载/备份恢复通过；DB及worker不直接对外；未完成不宣称可外部试用,手工/离线回放；待平台实现后实测
+GEO-47,P0,空分母,R2§3 未知分母,"inputs/evidence/edge-cases.jsonl E01,E03,E08,E15;golden/metrics.json groups",独立边界报告,仅失败数据，或仅未知推荐/引用的有效资料，另查看行业发现组事实指标,分母0显示暂无可判断数据/null而非0%；失败/未知数量可见；未提事实不补为正确,手工/离线回放；待平台实现后实测
+GEO-48,P1,四页和交付记录,R2§1 四页;§5 交付,walkthrough.md;execution-record-template.csv,平台具备四页或清楚标未实现,按演练走完整闭环，打开证据并导出报告，填实际记录,用户能理解问题和下一步；每步可追溯。工程验收、真实观察、试点独立/协助及付费原始反馈分开记录；未实现/未执行不能标通过,手工/离线回放；待平台实现后实测

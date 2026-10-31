@@ -1,0 +1,122 @@
+{
+  "is_synthetic": true,
+  "mode": "offline_ledger_only",
+  "timezone": "Asia/Shanghai",
+  "real_paid_budget": "0.00",
+  "price_notice": "金额纯为算例，不是供应商现价或授权",
+  "cases": [
+    {
+      "id": "O01",
+      "action": "sample",
+      "budget": "0.00",
+      "expected": "无供应商请求，无预留，提示预算未配置或不足"
+    },
+    {
+      "id": "O02",
+      "currency": "CNY",
+      "budget": "2.00",
+      "sampling_upper_bound": "0.50",
+      "analysis_upper_bound": "0.30",
+      "expected": {
+        "reserved": "0.80",
+        "actual_sampling": "0.40",
+        "actual_analysis": "0.20",
+        "actual_total": "0.60",
+        "released": "0.20",
+        "remaining": "1.40"
+      }
+    },
+    {
+      "id": "O03",
+      "currency": "CNY",
+      "budget": "0.70",
+      "sampling_upper_bound": "0.50",
+      "analysis_upper_bound": "0.30",
+      "expected": "执行前展示总上限0.80与预算0.70的不足；不足动作调用前停止、不透支。若已采样则保留原文并显示分析待预算，账本真实反映已支出与预留。"
+    },
+    {
+      "id": "O04",
+      "same_execution": [
+        "manual",
+        "baseline",
+        "daily"
+      ],
+      "date": "2026-10-04",
+      "question_id": "Q01",
+      "question_version": "questions-v1",
+      "channel_id": "fixture-async-replay",
+      "config_version": "config-v1",
+      "clicks": 2,
+      "workers": 2,
+      "expected": {
+        "executions": 1,
+        "reservations": 1,
+        "supplier_submissions": 1,
+        "evidence_rows": 1
+      },
+      "note": "只用于独立的离线供应商回放计数，不与人工导入主集或真实消费端混合；新批次需显式创建并重新展示消耗",
+      "source_type": "synthetic_replay"
+    },
+    {
+      "id": "O05",
+      "submission_state": "unknown",
+      "provider_task_id": "synthetic-task-unknown",
+      "reserved": "0.50",
+      "actual": null,
+      "restart": true,
+      "expected": "只查询原任务或人工核对；预留保留，提交次数仍为1"
+    },
+    {
+      "id": "O06",
+      "submission_state": "definitely_not_accepted",
+      "error": "retryable_rate_limit",
+      "expected": "最多2次自动重试并退避；总提交尝试最多3次，不无限轮询"
+    },
+    {
+      "id": "O07",
+      "planned_at": "2026-10-11T02:00:00Z",
+      "actual_at": "2026-10-12T02:00:00Z",
+      "expected": "48小时内只补最近一次；证据日期是10月12日，不伪造10月11日"
+    },
+    {
+      "id": "O08",
+      "planned_at": "2026-10-11T02:00:00Z",
+      "actual_at": "2026-10-14T02:00:00Z",
+      "expected": "超过48小时标错过；新建批次需预算提示，实际10月14日不填入第7—9天窗口"
+    },
+    {
+      "id": "O09",
+      "state": "paused",
+      "supplier_submitted": 1,
+      "pending": 2,
+      "expected": "2个未提交动作停止；已提交任务继续查账与结算，不重复采样"
+    },
+    {
+      "id": "O10",
+      "currencies": [
+        "CNY",
+        "USD"
+      ],
+      "price_upper_bound": null,
+      "expected": "币种分开；未知价格上限保持待配置，不能按0元运行"
+    },
+    {
+      "id": "O11",
+      "collected_at": "2026-10-03T16:30:00Z",
+      "expected_local_date": "2026-10-04",
+      "expected_local_time": "00:30"
+    },
+    {
+      "id": "O12",
+      "project_timezone": "Asia/Shanghai",
+      "focus_days": [
+        "Tuesday",
+        "Friday"
+      ],
+      "full_set_days": [
+        "Sunday"
+      ],
+      "expected": "同日同题同配置的复查、基线、日常和手工检查合并用途；下一次任务按项目时区安排"
+    }
+  ]
+}

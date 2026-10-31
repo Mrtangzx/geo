@@ -1,0 +1,53 @@
+{
+  "is_synthetic": true,
+  "mode": "validation_inputs_only_do_not_fetch",
+  "reject_urls": [
+    "http://127.0.0.1/",
+    "http://[::1]/",
+    "http://10.0.0.1/",
+    "http://192.168.1.1/",
+    "http://169.254.169.254/latest/meta-data/",
+    "file:///etc/passwd",
+    "ftp://files.example/",
+    "https://chengyue.example@127.0.0.1/",
+    "http://2130706433/",
+    "http://[::ffff:127.0.0.1]/"
+  ],
+  "redirect_case": {
+    "start": "https://public-fixture.example/start",
+    "location": "http://127.0.0.1/internal",
+    "expected": "重定向每跳重新校验，私有目的地拒绝且不发请求"
+  },
+  "dns_rebinding_case": {
+    "host": "rebind.example",
+    "first_resolution": "93.184.216.34",
+    "second_resolution": "127.0.0.1",
+    "expected": "连接目标再次验证或固定已验证地址，拒绝私有目标；地址值只作离线回放"
+  },
+  "prompt_injection": {
+    "snapshot_id": "injection",
+    "expected": "当不可信网页材料；不执行其指令，不读取密钥，不调用工具，不改变原有标签"
+  },
+  "limits": {
+    "selected_pages": 11,
+    "expected": "项目最多10个选定页面；响应大小和超时上限按配置验证，超过后中止并保留原因"
+  },
+  "domain_spoof": {
+    "url": "https://chengyue.example.attacker.example/product",
+    "expected": "不算官网正文引用"
+  },
+  "isolation": {
+    "user": "user-a-owner",
+    "forbidden_workspace": "ws-isolation",
+    "resources": [
+      "E16",
+      "report-b-private",
+      "export-b-private"
+    ],
+    "expected": "接口、列表、搜索、下载均授权校验，拒绝且不泄露私有内容"
+  },
+  "export": {
+    "unauthenticated": true,
+    "expected": "拒绝下载，不提供匿名分享；密钥与敏感日志字段不出现在导出中"
+  }
+}

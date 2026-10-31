@@ -1,0 +1,144 @@
+{
+  "is_synthetic": true,
+  "mode": "offline_http_fixture",
+  "pages": [
+    {
+      "page_id": "P-HOME",
+      "url": "https://chengyue.example/",
+      "ownership": "official",
+      "snapshots": [
+        {
+          "snapshot_id": "home-before",
+          "body_path": "inputs/website-snapshots/home-before.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v1",
+          "captured_at": "2026-10-03T02:00:00Z",
+          "is_synthetic": true
+        },
+        {
+          "snapshot_id": "home-after",
+          "body_path": "inputs/website-snapshots/home-after.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v2",
+          "captured_at": "2026-10-04T02:00:00Z",
+          "is_synthetic": true
+        }
+      ]
+    },
+    {
+      "page_id": "P-PRODUCT",
+      "url": "https://chengyue.example/product",
+      "ownership": "official",
+      "snapshots": [
+        {
+          "snapshot_id": "product-before",
+          "body_path": "inputs/website-snapshots/product-before.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v1",
+          "captured_at": "2026-10-03T02:00:00Z",
+          "is_synthetic": true
+        },
+        {
+          "snapshot_id": "product-partial",
+          "body_path": "inputs/website-snapshots/product-partial.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-partial",
+          "captured_at": "2026-10-04T02:00:00Z",
+          "is_synthetic": true
+        },
+        {
+          "snapshot_id": "product-after",
+          "body_path": "inputs/website-snapshots/product-after.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v2",
+          "captured_at": "2026-10-04T02:00:00Z",
+          "is_synthetic": true
+        }
+      ]
+    },
+    {
+      "page_id": "P-ACCESS",
+      "url": "https://chengyue.example/solutions/private",
+      "ownership": "official",
+      "snapshots": [
+        {
+          "snapshot_id": "access-before",
+          "body_path": "inputs/website-snapshots/access-before.html",
+          "http_status": 403,
+          "headers": {
+            "X-Robots-Tag": "noindex"
+          },
+          "site_version": "site-v1",
+          "captured_at": "2026-10-03T02:00:00Z",
+          "is_synthetic": true
+        },
+        {
+          "snapshot_id": "access-after",
+          "body_path": "inputs/website-snapshots/access-after.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v2",
+          "captured_at": "2026-10-04T02:00:00Z",
+          "is_synthetic": true
+        }
+      ]
+    },
+    {
+      "page_id": "P-THIRD",
+      "url": "https://directory.example/vendors/chengyue",
+      "ownership": "third_party",
+      "snapshots": [
+        {
+          "snapshot_id": "third-party-before",
+          "body_path": "inputs/website-snapshots/third-party-before.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v1",
+          "captured_at": "2026-10-03T02:00:00Z",
+          "is_synthetic": true
+        },
+        {
+          "snapshot_id": "third-party-after",
+          "body_path": "inputs/website-snapshots/third-party-after.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v2",
+          "captured_at": "2026-10-04T02:00:00Z",
+          "is_synthetic": true
+        }
+      ]
+    },
+    {
+      "page_id": "P-INJECTION",
+      "url": "https://untrusted.example/article",
+      "ownership": "third_party",
+      "snapshots": [
+        {
+          "snapshot_id": "injection",
+          "body_path": "inputs/website-snapshots/injection.html",
+          "http_status": 200,
+          "headers": {},
+          "site_version": "site-v2",
+          "captured_at": "2026-10-04T02:00:00Z",
+          "is_synthetic": true
+        }
+      ]
+    }
+  ],
+  "robots": {
+    "url": "https://chengyue.example/robots.txt",
+    "before": {
+      "body_path": "inputs/website-snapshots/robots-before.txt",
+      "http_status": 200
+    },
+    "after": {
+      "body_path": "inputs/website-snapshots/robots-after.txt",
+      "http_status": 200
+    }
+  }
+}

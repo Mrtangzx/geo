@@ -1,0 +1,11 @@
+﻿question_id,workspace_id,question_version,text,group,source_ref,priority,is_focus,confirmed_by,is_synthetic
+Q01,ws-chengyue,questions-v1,有哪些适合 B2B 软件企业的经营数据分析平台？,行业发现,销售咨询记录 S01（合成）,P0,true,fixture-customer,true
+Q02,ws-chengyue,questions-v1,有私有化要求的企业应该怎样选择数据分析平台？,行业发现,销售咨询记录 S02（合成）,P0,true,fixture-customer,true
+Q03,ws-chengyue,questions-v1,连锁门店有哪些常用的经营看板方案？,行业发现,客户 FAQ F03（合成）,P1,false,fixture-customer,true
+Q04,ws-chengyue,questions-v1,离线环境的数据分析产品应如何选型？,行业发现,客户 FAQ F04（合成）,P0,true,fixture-customer,true
+Q05,ws-chengyue,questions-v1,已有 ERP 的企业如何挑选能读取 MySQL 8.0 的分析工具？,方案比较,销售咨询记录 S05（合成）,P0,true,fixture-customer,true
+Q06,ws-chengyue,questions-v1,有哪些能承诺一天上线的数据分析产品？,方案比较,搜索词草稿 K06（合成）,P0,true,fixture-customer,true
+Q07,ws-chengyue,questions-v1,想让软件自动清洗全部原始数据，选型时要注意什么？,方案比较,客户 FAQ F07（合成）,P1,false,fixture-customer,true
+Q08,ws-chengyue,questions-v1,澄岳数析支持私有化部署吗？,品牌核实,销售咨询记录 S08（合成）,P0,true,fixture-customer,true
+Q09,ws-chengyue,questions-v1,澄岳数析能读取 MySQL 8.0 吗？,品牌核实,客户 FAQ F09（合成）,P1,false,fixture-customer,true
+Q10,ws-chengyue,questions-v1,澄岳数析是否值得采购？是否通过等保三级，价格是多少？,品牌核实,销售咨询记录 S10（合成）,P0,true,fixture-customer,true

@@ -1,0 +1,57 @@
+{
+  "is_synthetic": true,
+  "cases": [
+    {
+      "id": "A01",
+      "sample_id": "B-01-08",
+      "model_output": {
+        "recommendation": "mentioned",
+        "evidence_quote": "澄岳数析绝对值得购买。",
+        "fact_id": "F02"
+      },
+      "expected": "片段不存在，拒绝该分析，保留原文并提示待补依据"
+    },
+    {
+      "id": "A02",
+      "sample_id": "B-01-08",
+      "model_output": {
+        "recommendation": "mentioned",
+        "evidence_quote": "澄岳数析只支持公有云部署。",
+        "fact_id": "F999"
+      },
+      "expected": "事实ID无效，拒绝该分析"
+    },
+    {
+      "id": "A03",
+      "sample_id": "B-01-06",
+      "model_output": {
+        "recommendation": "recommended",
+        "evidence_quote": "如果必须承诺一天上线，不建议选择澄岳数析；先向供应商核实交付条件。"
+      },
+      "expected": "结构可能合法但语义错误，人工纠正为明确不推荐，记录操作者和理由，新建版本"
+    },
+    {
+      "id": "A04",
+      "sample_id": "B-01-01",
+      "model_output": {
+        "recommendation": "super_recommended"
+      },
+      "expected": "非法枚举，拒绝并保留失败状态"
+    },
+    {
+      "id": "A05",
+      "request_model": "configured-analysis-model",
+      "returned_model": null,
+      "error": "model_not_available",
+      "expected": "分析待配置，不静默切换模型，不把未分析写成0"
+    },
+    {
+      "id": "A06",
+      "sample_id": "E08",
+      "request_model": "configured-analysis-model",
+      "returned_model": null,
+      "error": "timeout_acceptance_unknown",
+      "expected": "先核对费用和原请求，不自动重复付费"
+    }
+  ]
+}
