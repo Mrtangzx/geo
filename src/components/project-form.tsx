@@ -28,7 +28,7 @@ export function projectToDraft(project: Project): ProjectDraft {
     product: project.product,
     targetCustomers: project.targetCustomers,
     competitors: project.competitors.map((competitor) => ({ ...competitor })),
-    facts: project.facts.map(({ id, statement, sourceUrl, status }) => ({ id, clientKey: id, statement, sourceUrl, status })),
+    facts: project.facts.map(({ id, statement, sourceUrl, sourceRef, status }) => ({ id, clientKey: id, statement, sourceUrl, sourceRef: sourceRef ?? "", status })),
     isSynthetic: project.isSynthetic,
   };
 }
@@ -42,6 +42,7 @@ export function draftToInput(draft: ProjectDraft): ProjectInput {
       ...(fact.id ? { id: fact.id } : {}),
       statement: fact.statement,
       sourceUrl: fact.sourceUrl,
+      sourceRef: fact.sourceRef ?? "",
       status: fact.status,
     })),
   };
@@ -120,9 +121,10 @@ export function ProjectForm({ draft, onChange, disabled }: ProjectFormProps) {
             <article className="fact-item" key={fact.clientKey}>
               <div className="fact-item-heading"><span className="fact-label">事实 {String(index + 1).padStart(2, "0")}</span><span className={`status-pill ${fact.status === "confirmed" ? "status-confirmed" : "status-pending"}`}>{fact.status === "confirmed" ? "已确认" : "待确认"}</span><Button type="button" variant="ghost" size="icon" aria-label={`移除第 ${index + 1} 条事实`} onClick={() => update("facts", draft.facts.filter((_, current) => current !== index))}><TrashIcon /></Button></div>
               <label className="field"><span>事实内容 <span className="required-mark">*</span></span><textarea required rows={2} maxLength={6000} placeholder="填写一项明确、可核对的业务陈述" value={fact.statement} onChange={(event) => updateFact(index, { statement: event.target.value, ...(fact.status === "confirmed" ? { status: "needs_confirmation" as const } : {}) })} /></label>
-              <label className="field"><span>依据链接 {fact.status === "confirmed" ? <span className="required-mark">*</span> : <span className="optional">待确认时可稍后补充</span>}</span><input type="url" required={fact.status === "confirmed"} maxLength={2000} placeholder="https:// 可追溯的官网或产品资料链接" value={fact.sourceUrl} onChange={(event) => updateFact(index, { sourceUrl: event.target.value, ...(fact.status === "confirmed" ? { status: "needs_confirmation" as const } : {}) })} /></label>
-              <label className="fact-confirm-option"><input type="checkbox" checked={fact.status === "confirmed"} disabled={!fact.statement.trim() || !fact.sourceUrl.trim()} onChange={(event) => updateFact(index, { status: event.target.checked ? "confirmed" : "needs_confirmation" })} /><span>企业已确认此事实及来源</span></label>
-              {(!fact.statement.trim() || !fact.sourceUrl.trim()) && <p className="field-help">补充事实内容和依据链接后，才能标记为已确认。</p>}
+              <label className="field"><span>依据链接 <span className="optional">链接或资料引用至少一项</span></span><input type="url" required={fact.status === "confirmed" && !fact.sourceRef?.trim()} maxLength={2000} placeholder="https:// 可追溯的官网或产品资料链接" value={fact.sourceUrl} onChange={(event) => updateFact(index, { sourceUrl: event.target.value, ...(fact.status === "confirmed" ? { status: "needs_confirmation" as const } : {}) })} /></label>
+              <label className="field"><span>资料引用或出处说明</span><input maxLength={4000} placeholder="例如：客户确认表第3项、资料名称与章节；不必编造网址" value={fact.sourceRef ?? ""} onChange={(event) => updateFact(index, { sourceRef: event.target.value, ...(fact.status === "confirmed" ? { status: "needs_confirmation" as const } : {}) })} /></label>
+              <label className="fact-confirm-option"><input type="checkbox" checked={fact.status === "confirmed"} disabled={!fact.statement.trim() || (!fact.sourceUrl.trim() && !fact.sourceRef?.trim())} onChange={(event) => updateFact(index, { status: event.target.checked ? "confirmed" : "needs_confirmation" })} /><span>企业已确认此事实及来源</span></label>
+              {(!fact.statement.trim() || (!fact.sourceUrl.trim() && !fact.sourceRef?.trim())) && <p className="field-help">补充事实内容及可核对的链接或资料引用后，才能标记为已确认。</p>}
             </article>
           ))}</div>
         )}

@@ -15,6 +15,13 @@
       "when": 1793422876506,
       "tag": "0001_deep_spirit",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793426835684,
+      "tag": "0002_keen_blizzard",
+      "breakpoints": true
     }
   ]
 }

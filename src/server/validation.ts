@@ -10,10 +10,11 @@ const factInput = z.object({
   id: z.string().uuid().optional(),
   statement: z.string().trim().min(1, "请填写事实内容。").max(8000),
   sourceUrl: optionalUrl,
+  sourceRef: z.string().trim().max(4000).optional(),
   status: z.enum(["confirmed", "needs_confirmation"]),
 }).strict().superRefine((fact, context) => {
-  if (fact.status === "confirmed" && !fact.sourceUrl) {
-    context.addIssue({ code: "custom", path: ["sourceUrl"], message: "确认事实前请补充来源网址。" });
+  if (fact.status === "confirmed" && !fact.sourceUrl && !fact.sourceRef?.trim()) {
+    context.addIssue({ code: "custom", path: ["sourceRef"], message: "确认事实前请补充来源网址或可核对的资料引用。" });
   }
 });
 

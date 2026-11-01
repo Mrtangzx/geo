@@ -17,7 +17,7 @@ function resolveFacts(input: ProjectInput, actorId: string, now: string, previou
       throw new AppError(400, "FACT_NOT_FOUND", "事实版本已变化，请重新打开项目后再编辑。");
     }
     const confirmationUnchanged = old?.status === "confirmed" && fact.status === "confirmed"
-      && old.statement === fact.statement && old.sourceUrl === fact.sourceUrl;
+      && old.statement === fact.statement && old.sourceUrl === fact.sourceUrl && (old.sourceRef ?? "") === (fact.sourceRef ?? "");
     return {
       ...fact,
       id: old?.id ?? randomUUID(),

@@ -9,6 +9,7 @@ export interface FactInput {
   id?: string;
   statement: string;
   sourceUrl: string;
+  sourceRef?: string;
   status: FactStatus;
 }
 
