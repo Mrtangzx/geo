@@ -44,6 +44,7 @@ export const answerEvidence = pgTable("answer_evidence", {
   sourceSampleKey: text("source_sample_key").notNull(), snapshot: jsonb("snapshot").$type<EvidenceRecord>().notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull(),
 }, (table) => [unique("answer_evidence_source_unique").on(table.workspaceId, table.projectId, table.sourceSampleKey),
+  unique("answer_evidence_scope_unique").on(table.id, table.projectId, table.workspaceId),
   foreignKey({ columns: [table.projectId, table.workspaceId], foreignColumns: [projects.id, projects.workspaceId] }), index("answer_evidence_project_idx").on(table.workspaceId, table.projectId)]);
 
 export const runUnits = pgTable("sampling_run_units", {

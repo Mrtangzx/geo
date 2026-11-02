@@ -92,6 +92,7 @@ export function calculateReportComparisons(
         const reviewDates = [...new Set(after.map((e) => knownDate(e, timezone)).filter((d): d is string => !!d))].sort();
         const limitations: string[] = [];
         if (source.isSynthetic) limitations.push("合成演练仅验证工程流程，不能证明真实通道、真实日期观察或优化效果。");
+        if (source.sourceType === "manual_import") limitations.push("人工导入样本单列，仅供观察，不作为自动消费端采样完成率、通道验收或严格改善结论。");
         if (!questionIntersection.length) limitations.push("没有共同且配置可比的问题集合。");
         if (!baseline.length || !review.length) limitations.push("基线或该轮复查尚无同配置回答，配置变化的样本单列。");
         if (source.region == null || source.language == null || source.searchMode == null || source.samplingModel == null) limitations.push("地区、语言、搜索配置或采样模型存在未知条件，保留观察数据。");

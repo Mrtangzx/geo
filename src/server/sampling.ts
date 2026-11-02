@@ -9,6 +9,7 @@ import { getProject } from "./projects";
 import { getConfirmedSamplingQuestions } from "./questions";
 import { fixtureGroupMap, getFixtureSeed, loadFixturePeriod } from "./synthetic-fixtures";
 import { markBudgetUnknown, releaseBudget, reserveBudget, settleBudget } from "./budgets";
+import { enrichEvidenceAttachments } from "./evidence-attachments";
 
 export const createRunSchema = z.object({
   mode: z.enum(["synthetic_fixture", "synthetic_operations", "real_domestic"]),
@@ -35,13 +36,13 @@ export async function getRun(workspaceId: string, projectId: string, id: string)
 }
 export async function listEvidence(workspaceId: string, projectId: string): Promise<EvidenceRecord[]> {
   await getProject(workspaceId, projectId);
-  return (await getDatabase().select({ snapshot: answerEvidence.snapshot }).from(answerEvidence).where(and(eq(answerEvidence.workspaceId, workspaceId), eq(answerEvidence.projectId, projectId))).orderBy(desc(answerEvidence.createdAt)).limit(2000)).map((r) => r.snapshot);
+  return enrichEvidenceAttachments((await getDatabase().select({ snapshot: answerEvidence.snapshot }).from(answerEvidence).where(and(eq(answerEvidence.workspaceId, workspaceId), eq(answerEvidence.projectId, projectId))).orderBy(desc(answerEvidence.createdAt)).limit(2000)).map((r) => r.snapshot));
 }
 export async function getEvidence(workspaceId: string, projectId: string, id: string): Promise<EvidenceRecord> {
   await getProject(workspaceId, projectId);
   const [row] = await getDatabase().select().from(answerEvidence).where(and(eq(answerEvidence.id, id), eq(answerEvidence.workspaceId, workspaceId), eq(answerEvidence.projectId, projectId)));
   if (!row) throw new AppError(404, "EVIDENCE_NOT_FOUND", "未找到该回答证据。");
-  return row.snapshot;
+  return (await enrichEvidenceAttachments([row.snapshot]))[0];
 }
 
 export async function createRun(workspaceId: string, actorId: string, projectId: string, input: CreateRunInput): Promise<SamplingRun> {

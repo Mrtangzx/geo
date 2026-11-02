@@ -2,7 +2,7 @@ import { AppError } from "./errors";
 
 const MAX_BODY_BYTES = 256 * 1024;
 
-export async function readJsonBody(request: Request): Promise<unknown> {
+export async function readJsonBody(request: Request, maxBodyBytes = MAX_BODY_BYTES): Promise<unknown> {
   const origin = request.headers.get("origin");
   if (origin) {
     // Next may construct request.url with its internal listening hostname. The
@@ -35,7 +35,7 @@ export async function readJsonBody(request: Request): Promise<unknown> {
       const chunk = await reader.read();
       if (chunk.done) break;
       size += chunk.value.byteLength;
-      if (size > MAX_BODY_BYTES) {
+      if (size > maxBodyBytes) {
         await reader.cancel();
         throw new AppError(413, "REQUEST_TOO_LARGE", "提交内容过大，请减少资料后重试。");
       }

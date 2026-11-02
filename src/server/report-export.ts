@@ -1,4 +1,5 @@
 import type { ReviewReport } from "@/lib/report-contracts";
+import type { AnalysisEvidence } from "@/lib/analysis-contracts";
 
 function escape(value: unknown): string {
   return String(value ?? "未知").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]!);
@@ -9,6 +10,18 @@ function table(headers: string[], rows: unknown[][]): string {
 }
 
 function percent(value: number | null | undefined): string { return value == null ? "暂无可判断数据" : `${value.toFixed(2)}%`; }
+
+function manualEvidenceDetails(evidence: AnalysisEvidence, projectId: string) {
+  const provenance = evidence.manualProvenance;
+  const source = provenance ? `<p>人工采集人：${escape(provenance.collectedBy)}；导入操作者：${escape(provenance.importedBy)}；批次：${escape(provenance.batchId)}。<br>出处：${escape(provenance.sourceUrl)}（未自动检查可用性）；说明：${escape(provenance.notes)}</p>` : "";
+  let origin: string | null = null;
+  try { const url = new URL(process.env.BETTER_AUTH_URL || "http://127.0.0.1:3000"); if (["http:", "https:"].includes(url.protocol) && !url.username && !url.password) origin = url.origin; } catch { /* Omit links if the operator configuration is invalid. */ }
+  const screenshots = (evidence.attachments ?? []).map((attachment) => {
+    const href = origin ? `${origin}/api/projects/${projectId}/evidence/${evidence.id}/attachments/${attachment.id}` : null;
+    return `<li>${href ? `<a href="${escape(href)}">${escape(attachment.filename)}</a>` : escape(attachment.filename)} · ${attachment.width}×${attachment.height} · SHA-256 ${escape(attachment.sha256)} · 上传于 ${escape(attachment.uploadedAt)}；查看仍须登录所属工作区。</li>`;
+  }).join("");
+  return source + (screenshots ? `<p>已绑定截图（不自动代替全文或引用）：</p><ul>${screenshots}</ul>` : "");
+}
 
 export function exportReportHtml(report: ReviewReport): string {
   const groups = report.metricsSnapshot.groups;
@@ -26,6 +39,6 @@ ${report.comparisons.map((c) => `<article><h3>${escape(c.period)} · ${escape(c.
 <h2>修改与核验记录</h2>
 ${report.tasks.map((task) => `<article><h3>${escape(task.title)} · V${task.revision}</h3><p>${escape(task.targetUrl)} · ${escape(task.state)}${task.isSynthetic ? " · 合成演练" : ""}</p><p>依据资料V${task.basis.projectVersion}；分析${escape(task.basis.analysisIds.join("、"))}；批准${escape(task.currentApprovalId)}。</p><blockquote>${escape(task.proposedText)}</blockquote>${table(["核验ID", "执行时间", "观察时间", "来源", "结果"], task.verifications.map((v) => [v.id, v.executedAt, v.observedAt, v.source, v.allPassed ? (v.isSynthetic ? "合成全部条件通过" : "全部条件通过") : "部分条件失败或未知"]))}</article>`).join("") || "<p>尚无修改任务。</p>"}
 <h2>回答证据与标签版本</h2>
-${report.evidence.map((evidence) => { const analysis = report.analyses.find((a) => a.evidenceId === evidence.id); return `<article><h3>${escape(evidence.questionText)}</h3><p class="meta">证据 ${escape(evidence.id)} · ${escape(evidence.sourceType)} / ${escape(evidence.platform)} · ${escape(evidence.collectedAt)}${evidence.isSynthetic ? " · 合成" : ""}<br>资料V${evidence.projectVersion} · 问题${escape(evidence.questionVersion)} · 配置${escape(evidence.configVersion)} · 分析${analysis ? `${escape(analysis.id)} / V${analysis.revision} / ${escape(analysis.mode)}` : "尚未分析"}</p><blockquote>${escape(evidence.answerText)}</blockquote><p>引用采集：${escape(evidence.citations.status)}；正文映射：${escape(evidence.citations.bodyMappings?.map((mapping) => `${mapping.quote} → ${mapping.url}`).join("\n") ?? "未知")}。</p></article>`; }).join("")}
+${report.evidence.map((evidence) => { const analysis = report.analyses.find((a) => a.evidenceId === evidence.id); return `<article><h3>${escape(evidence.questionText)}</h3><p class="meta">证据 ${escape(evidence.id)} · ${escape(evidence.sourceType)} / ${escape(evidence.platform)} · ${escape(evidence.collectedAt)}${evidence.isSynthetic ? " · 合成" : ""}<br>资料V${evidence.projectVersion} · 问题${escape(evidence.questionVersion)} · 配置${escape(evidence.configVersion)} · 分析${analysis ? `${escape(analysis.id)} / V${analysis.revision} / ${escape(analysis.mode)}` : "尚未分析"}</p><blockquote>${escape(evidence.answerText)}</blockquote>${manualEvidenceDetails(evidence, report.projectId)}<p>引用采集：${escape(evidence.citations.status)}；正文映射：${escape(evidence.citations.bodyMappings?.map((mapping) => `${mapping.quote} → ${mapping.url}`).join("\n") ?? "未知")}。</p></article>`; }).join("")}
 <p class="meta">本文件来自已授权的工作区报告快照。观察变化不证明因果关系或统计显著性；外部回放链接可能失效，原始回答与标签版本以上述冻结依据为准。</p></body></html>`;
 }

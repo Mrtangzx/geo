@@ -1,4 +1,5 @@
 import type { QuestionGroup } from "./question-contracts";
+import type { EvidenceAttachment, ManualProvenance } from "./import-contracts";
 
 export type FixturePeriod = "baseline" | "review-1" | "review-2" | "edge";
 export type SamplingRunMode = "synthetic_fixture" | "synthetic_operations" | "real_domestic";
@@ -23,7 +24,7 @@ export interface RawFixtureEvidence {
 }
 
 export interface EvidenceRecord {
-  id: string; workspaceId: string; projectId: string; runId: string;
+  id: string; workspaceId: string; projectId: string; runId: string | null;
   questionId: string | null; questionVersion: number; questionText: string; questionGroup: QuestionGroup | null;
   projectVersion: number; sourceSampleId: string; sourceSampleKey: string;
   sourceType: string; channelId: string; platform: string; surface: string; isSynthetic: boolean;
@@ -33,9 +34,11 @@ export interface EvidenceRecord {
   citations: { status: string; bodyMappings: { quote: string; url: string }[] | null };
   sourceCandidates: { url: string; kind?: string }[];
   config: Record<string, string | null>; providerTaskId: string | null;
-  siteVersion: string; releaseVersion: string | null;
+  siteVersion: string | null; releaseVersion: string | null;
   cost: RawFixtureEvidence["cost"];
-  rawFixture: RawFixtureEvidence;
+  rawFixture: RawFixtureEvidence | null;
+  questionSourceVersion?: string; factSourceVersion?: string; samplingConfigVersion?: string; samplingModel?: string | null;
+  manualProvenance?: ManualProvenance; attachments?: EvidenceAttachment[];
 }
 
 export interface FixtureSeed {

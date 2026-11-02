@@ -1,4 +1,5 @@
 import type { Project } from "./contracts";
+import type { EvidenceAttachment, ManualProvenance } from "./import-contracts";
 
 export const recommendationKinds = ["recommended", "mentioned", "not_mentioned", "not_recommended", "unknown"] as const;
 export type RecommendationKind = typeof recommendationKinds[number];
@@ -18,6 +19,7 @@ export interface AnalysisEvidence {
   capture: { questionVerified: boolean; platformVerified: boolean; answerComplete: boolean; timeVerified: boolean };
   citations: { status: string; bodyMappings: { url: string; quote: string }[] | null };
   sourceCandidates: { url: string; kind?: string }[];
+  manualProvenance?: ManualProvenance; attachments?: EvidenceAttachment[];
 }
 
 export interface AnalysisFactClaim {

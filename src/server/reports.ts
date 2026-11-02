@@ -13,6 +13,7 @@ import { listTasks } from "./task-repository";
 import { listMonitoringPlans } from "./monitoring";
 import { normalizeAnalysisEvidence } from "./analysis-evidence";
 import { calculateReportComparisons, reportWindows } from "./report-calculation";
+import { enrichEvidenceAttachments } from "./evidence-attachments";
 
 export const createReportSchema = z.object({ metricsSnapshotId: z.string().uuid() }).strict();
 
@@ -48,7 +49,7 @@ export async function createReport(workspaceId: string, actorId: string, project
     listTasks(workspaceId, projectId), listMonitoringPlans(workspaceId, projectId),
   ]);
   if (evidenceRows.length !== evidenceIds.length || analysisRows.length !== analysisIds.length) throw new AppError(409, "REPORT_BASIS_MISSING", "指标快照引用的证据或标签版本不完整，不能生成报告。");
-  const evidence = evidenceRows.map((row) => normalizeAnalysisEvidence(row.snapshot));
+  const evidence = (await enrichEvidenceAttachments(evidenceRows.map((row) => row.snapshot))).map(normalizeAnalysisEvidence);
   const analyses = analysisRows.map((row) => row.snapshot);
   const timezone = monitoringPlans[0]?.timezone ?? "Asia/Shanghai";
   const repeatsPerDay = monitoringPlans[0]?.repeatsPerDay ?? 1;
